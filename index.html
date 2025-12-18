@@ -2,50 +2,209 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Opciones</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesos TALMA</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 30px;
-            background: #f4f4f4;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            margin-bottom: 25px;
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
             color: #333;
         }
-        a {
-            display: block;
-            margin: 15px auto;
-            padding: 16px;
-            max-width: 340px;
-            text-decoration: none;
-            background: #000;
-            color: #fff;
-            border-radius: 10px;
-            font-size: 18px;
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
         }
-        a:hover {
-            background: #444;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background: white;
+            padding: 10px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .option-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .option-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #e9ecef;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 12px;
+        }
+
+        .card-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                max-width: none;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .logo {
+                width: 100px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 25px 15px;
+            }
+            
+            .card-image {
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
-
-<h1>Seleccione una opción</h1>
-
-<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode" target="_blank">
-Formulario – Opción 1
-</a>
-
-<a href="https://ejemplo2.com" target="_blank">
-Opción 2
-</a>
-
-<a href="https://ejemplo3.com" target="_blank">
-Opción 3
-</a>
-
+    <div class="container">
+        <div class="header">
+            <img src="img/imglogo.png" alt="Logo TALMA" class="logo">
+            <h1 class="title">Accesos TALMA</h1>
+            <p class="subtitle">Portal para colaboradores</p>
+        </div>
+        
+        <div class="content">
+            <div class="option-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode', '_blank')">
+                <img src="img/opcion1.png" alt="Referidos Talma" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Referidos Talma</h3>
+                    <span class="card-button">Acceder</span>
+                </div>
+            </div>
+            
+            <div class="option-card" onclick="window.open('#', '_blank')">
+                <img src="img/opcion2.png" alt="Opción 2" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Nombre de Opción 2</h3>
+                    <span class="card-button">Acceder</span>
+                </div>
+            </div>
+            
+            <div class="option-card" onclick="window.open('#', '_blank')">
+                <img src="img/opcion3.png" alt="Opción 3" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Nombre de Opción 3</h3>
+                    <span class="card-button">Acceder</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Uso exclusivo para colaboradores TALMA</p>
+        </div>
+    </div>
 </body>
 </html>
