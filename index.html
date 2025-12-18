@@ -12,158 +12,302 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #002b6c 0%, #004080 50%, #0056b3 100%);
             min-height: 100vh;
             padding: 20px;
             color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(126, 174, 63, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(126, 174, 63, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .container {
-            max-width: 400px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 43, 108, 0.3), 0 10px 30px rgba(0, 43, 108, 0.2);
             overflow: hidden;
-            animation: fadeIn 0.6s ease-out;
+            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes fadeIn {
+        @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(60px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px 20px;
+            background: linear-gradient(135deg, #002b6c 0%, #003d7a 50%, #004d99 100%);
+            padding: 50px 40px;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(126, 174, 63, 0.1) 0%, transparent 100%);
         }
 
         .logo {
-            width: 120px;
+            width: 160px;
             height: auto;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background: white;
-            padding: 10px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .subtitle {
-            font-size: 16px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 18px;
+            opacity: 0.95;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
         }
 
         .content {
-            padding: 30px 20px;
+            padding: 60px 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .option-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 16px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 43, 108, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 43, 108, 0.1);
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #002b6c 0%, #7eae3f 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .option-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-color: #667eea;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 43, 108, 0.2), 0 10px 20px rgba(126, 174, 63, 0.1);
+            border-color: rgba(126, 174, 63, 0.3);
         }
 
-        .option-card:last-child {
-            margin-bottom: 0;
+        .option-card:hover::before {
+            transform: scaleX(1);
         }
 
         .card-image {
             width: 100%;
-            height: 120px;
+            height: 180px;
             object-fit: cover;
-            background: #e9ecef;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
+            transition: transform 0.4s ease;
+        }
+
+        .option-card:hover .card-image {
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
         }
 
         .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #002b6c;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
         }
 
         .card-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #7eae3f 0%, #8bc34a 100%);
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(126, 174, 63, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
         .card-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(126, 174, 63, 0.4);
+            background: linear-gradient(135deg, #8bc34a 0%, #9ccc65 100%);
+        }
+
+        .card-button:hover::before {
+            left: 100%;
         }
 
         .footer {
-            background: #f8f9fa;
-            padding: 20px;
+            background: linear-gradient(135deg, #002b6c 0%, #003d7a 100%);
+            padding: 30px 40px;
             text-align: center;
-            font-size: 12px;
-            color: #6c757d;
-            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(126, 174, 63, 0.2);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
             .container {
-                margin: 10px;
-                max-width: none;
+                border-radius: 20px;
+                margin: 0;
             }
             
             .header {
-                padding: 25px 15px;
+                padding: 40px 25px;
             }
             
             .logo {
-                width: 100px;
+                width: 130px;
+                padding: 15px;
             }
             
             .title {
-                font-size: 24px;
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
             }
             
             .content {
-                padding: 25px 15px;
+                padding: 40px 25px;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .option-card {
+                border-radius: 16px;
             }
             
             .card-image {
-                height: 100px;
+                height: 150px;
+            }
+            
+            .card-content {
+                padding: 25px 20px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .card-button {
+                padding: 14px 35px;
+                font-size: 15px;
+            }
+            
+            .footer {
+                padding: 25px 20px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .option-card {
+                margin: 0;
+            }
+            
+            .card-button {
+                padding: 12px 30px;
+                font-size: 14px;
             }
         }
     </style>
@@ -173,31 +317,33 @@
         <div class="header">
             <img src="img/imglogo.png" alt="Logo TALMA" class="logo">
             <h1 class="title">Accesos TALMA</h1>
-            <p class="subtitle">Portal para colaboradores</p>
+            <p class="subtitle">Portal corporativo para colaboradores</p>
         </div>
         
         <div class="content">
-            <div class="option-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode', '_blank')">
-                <img src="img/imgr (1).png" alt="Referidos Talma" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Referidos Talma</h3>
-                    <span class="card-button">Acceder</span>
+            <div class="options-grid">
+                <div class="option-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode', '_blank')">
+                    <img src="img/opcion1.png" alt="Referidos Talma" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Referidos Talma</h3>
+                        <span class="card-button">Acceder</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="option-card" onclick="window.open('#', '_blank')">
-                <img src="img/opcion2.png" alt="Opción 2" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Nombre de Opción 2</h3>
-                    <span class="card-button">Acceder</span>
+                
+                <div class="option-card" onclick="window.open('#', '_blank')">
+                    <img src="img/opcion2.png" alt="Opción 2" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Nombre de Opción 2</h3>
+                        <span class="card-button">Acceder</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="option-card" onclick="window.open('#', '_blank')">
-                <img src="img/opcion3.png" alt="Opción 3" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Nombre de Opción 3</h3>
-                    <span class="card-button">Acceder</span>
+                
+                <div class="option-card" onclick="window.open('#', '_blank')">
+                    <img src="img/opcion3.png" alt="Opción 3" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Nombre de Opción 3</h3>
+                        <span class="card-button">Acceder</span>
+                    </div>
                 </div>
             </div>
         </div>
