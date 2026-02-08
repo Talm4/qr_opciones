@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accesos TALMA</title>
+    <meta name="theme-color" content="#002b6c">
+    <meta name="description" content="Portal de Recursos Humanos Talma - Referidos y Convocatorias Internas">
+    
+    <title>Accesos RRHH Talma</title>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Tipografía distintiva -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ===========================
+           VARIABLES CSS - PALETA CORPORATIVA
+           =========================== */
+        :root {
+            --color-primary: #002b6c;      /* Azul corporativo */
+            --color-accent: #7fae3e;       /* Verde corporativo */
+            --color-bg: #f4f7f6;           /* Gris muy claro */
+            --color-white: #ffffff;
+            --color-text-dark: #2c3e50;
+            --color-text-light: #6c757d;
+            --border-radius: 15px;
+            --shadow-subtle: 0 4px 15px rgba(0, 43, 108, 0.08);
+            --shadow-hover: 0 8px 25px rgba(0, 43, 108, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===========================
+           RESET Y BASE
+           =========================== */
         * {
             margin: 0;
             padding: 0;
@@ -12,345 +43,946 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #002b6c 0%, #004080 50%, #0056b3 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f4f7f6 0%, #e8eceb 100%);
+            color: var(--color-text-dark);
             min-height: 100vh;
-            padding: 20px;
-            color: #333;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(126, 174, 63, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(126, 174, 63, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 43, 108, 0.3), 0 10px 30px rgba(0, 43, 108, 0.2);
-            overflow: hidden;
-            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
+        /* ===========================
+           HEADER - LOGO Y TÍTULO
+           =========================== */
         .header {
-            background: linear-gradient(135deg, #002b6c 0%, #003d7a 50%, #004d99 100%);
-            padding: 50px 40px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #003d8f 100%);
+            padding: 2rem 1.5rem;
             text-align: center;
-            color: white;
+            box-shadow: 0 4px 20px rgba(0, 43, 108, 0.2);
             position: relative;
             overflow: hidden;
         }
 
+        /* Efecto decorativo en el header */
         .header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(126, 174, 63, 0.1) 0%, transparent 100%);
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(127, 174, 62, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
-            width: 160px;
-            height: auto;
-            margin-bottom: 30px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin: 0;
+            letter-spacing: -0.5px;
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .title {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        .main-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 0.5rem;
+            font-weight: 300;
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
         }
 
-        .subtitle {
-            font-size: 18px;
-            opacity: 0.95;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 2;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .content {
-            padding: 60px 40px;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
+        /* ===========================
+           CONTENEDOR PRINCIPAL
+           =========================== */
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
+            padding: 2.5rem 1.5rem;
         }
 
-        .option-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid rgba(0, 43, 108, 0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
+        /* ===========================
+           GRID DE TARJETAS - RESPONSIVE
+           =========================== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===========================
+           TARJETAS - CARD DESIGN
+           =========================== */
+        .card {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
+            padding: 2rem;
+            transition: var(--transition);
             position: relative;
-            box-shadow: 0 8px 25px rgba(0, 43, 108, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out backwards;
         }
 
-        .option-card::before {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #002b6c 0%, #7eae3f 100%);
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-accent) 0%, #9bc95a 100%);
             transform: scaleX(0);
-            transition: transform 0.4s ease;
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
-        .option-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 43, 108, 0.2), 0 10px 20px rgba(126, 174, 63, 0.1);
-            border-color: rgba(126, 174, 63, 0.3);
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
         }
 
-        .option-card:hover::before {
+        .card:hover::before {
             transform: scaleX(1);
         }
 
-        .card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
-            transition: transform 0.4s ease;
-        }
-
-        .option-card:hover .card-image {
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 30px;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        /* Header de la tarjeta */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
         }
 
         .card-title {
-            font-size: 22px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #002b6c;
-            margin-bottom: 20px;
-            letter-spacing: -0.3px;
+            color: var(--color-primary);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .card-button {
-            display: inline-flex;
+        /* Tooltip info icon */
+        .info-icon {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .info-icon i {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .info-icon:hover i {
+            color: var(--color-accent);
+            transform: scale(1.1);
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 125%;
+            right: 0;
+            background: var(--color-text-dark);
+            color: var(--color-white);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            width: 220px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            line-height: 1.4;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            right: 10px;
+            border: 6px solid transparent;
+            border-bottom-color: var(--color-text-dark);
+        }
+
+        .info-icon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            top: 135%;
+        }
+
+        /* Descripción */
+        .card-description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contenedor del QR */
+        .qr-container {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border: 2px dashed var(--color-primary);
+            position: relative;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1rem;
+            background: var(--color-white);
+            border-radius: 8px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #7eae3f 0%, #8bc34a 100%);
-            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-placeholder i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            opacity: 0.3;
+        }
+
+        .qr-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .qr-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        /* ===========================
+           BOTONES - ACCIONES
+           =========================== */
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(126, 174, 63, 0.3);
             position: relative;
             overflow: hidden;
         }
 
-        .card-button::before {
+        .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
         }
 
-        .card-button:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(126, 174, 63, 0.4);
-            background: linear-gradient(135deg, #8bc34a 0%, #9ccc65 100%);
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
         }
 
-        .card-button:hover::before {
-            left: 100%;
+        /* Botón primario - Verde corporativo */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #8bc34a 100%);
+            color: var(--color-white);
+            box-shadow: 0 4px 12px rgba(127, 174, 62, 0.3);
         }
 
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #8bc34a 0%, var(--color-accent) 100%);
+            box-shadow: 0 6px 20px rgba(127, 174, 62, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Botón secundario - Azul corporativo */
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* ===========================
+           FOOTER
+           =========================== */
         .footer {
-            background: linear-gradient(135deg, #002b6c 0%, #003d7a 100%);
-            padding: 30px 40px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 1.5rem;
             text-align: center;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            border-top: 1px solid rgba(126, 174, 63, 0.2);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            opacity: 0.9;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
+        .footer-link:hover {
+            color: var(--color-accent);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* ===========================
+           PWA SNACKBAR - AÑADIR A INICIO
+           =========================== */
+        .pwa-snackbar {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #003d8f 100%);
+            color: var(--color-white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 108, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1000;
+            transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 90%;
+        }
+
+        .pwa-snackbar.show {
+            bottom: 20px;
+        }
+
+        .pwa-snackbar-content {
+            flex: 1;
+        }
+
+        .pwa-snackbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pwa-snackbar-text {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .pwa-snackbar-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--color-white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .pwa-snackbar-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===========================
+           LOADING SPINNER
+           =========================== */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--color-white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn.loading .spinner {
+            display: inline-block;
+        }
+
+        .btn.loading .btn-text {
+            display: none;
+        }
+
+        /* ===========================
+           RESPONSIVE - MOBILE FIRST
+           =========================== */
+        @media (max-width: 767px) {
+            .main-title {
+                font-size: 1.6rem;
             }
-            
-            .container {
-                border-radius: 20px;
-                margin: 0;
+
+            .card {
+                padding: 1.5rem;
             }
-            
-            .header {
-                padding: 40px 25px;
-            }
-            
-            .logo {
-                width: 130px;
-                padding: 15px;
-            }
-            
-            .title {
-                font-size: 32px;
-            }
-            
-            .subtitle {
-                font-size: 16px;
-            }
-            
-            .content {
-                padding: 40px 25px;
-            }
-            
-            .options-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .option-card {
-                border-radius: 16px;
-            }
-            
-            .card-image {
-                height: 150px;
-            }
-            
-            .card-content {
-                padding: 25px 20px;
-            }
-            
+
             .card-title {
-                font-size: 20px;
+                font-size: 1.2rem;
             }
-            
-            .card-button {
-                padding: 14px 35px;
-                font-size: 15px;
+
+            .qr-placeholder {
+                width: 180px;
+                height: 180px;
             }
-            
-            .footer {
-                padding: 25px 20px;
-                font-size: 13px;
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pwa-snackbar {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
-        @media (max-width: 480px) {
-            .options-grid {
-                grid-template-columns: 1fr;
+        @media (min-width: 1024px) {
+            .container {
+                padding: 3rem 2rem;
             }
-            
-            .option-card {
-                margin: 0;
+
+            .cards-grid {
+                gap: 2.5rem;
             }
-            
-            .card-button {
-                padding: 12px 30px;
-                font-size: 14px;
-            }
+        }
+
+        /* ===========================
+           NOTIFICACIÓN TOAST
+           =========================== */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-white);
+            color: var(--color-text-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 2000;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .toast.error {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .toast-icon {
+            font-size: 1.3rem;
+        }
+
+        .toast.success .toast-icon {
+            color: var(--color-accent);
+        }
+
+        .toast.error .toast-icon {
+            color: #e74c3c;
+        }
+
+        .toast-message {
+            font-size: 0.9rem;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="img/logo1.png" alt="Logo TALMA" class="logo">
-            <h1 class="title">Accesos TALMA</h1>
-            <p class="subtitle">Portal corporativo para colaboradores</p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-container">
+            <!-- INSTRUCCIONES: Reemplaza 'logo-talma.png' con la ruta de tu logo -->
+            <!-- El logo puede ser PNG, SVG o JPG. Ejemplo: <img src="assets/logo-talma.png" alt="Logo Talma" class="logo"> -->
+            <img src="logo-talma.png" alt="Logo Talma" class="logo">
         </div>
-        
-        <div class="content">
-            <div class="options-grid">
-                <div class="option-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode', '_blank')">
-                    <img src="img/imgr (1).png" alt="Referidos Talma" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Referidos Talma</h3>
-                        <span class="card-button">Acceder</span>
+        <h1 class="main-title">Accesos RRHH Talma</h1>
+        <p class="main-subtitle">Portal corporativo para colaboradores</p>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container">
+        <div class="cards-grid">
+            
+            <!-- TARJETA 1: PROGRAMA DE REFERIDOS -->
+            <article class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-users"></i>
+                        Programa de Referidos
+                    </h2>
+                    <div class="info-icon">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="tooltip">
+                            Recomienda talento calificado. Si tu candidato es contratado, recibirás un bono de reconocimiento.
+                        </div>
                     </div>
                 </div>
                 
-                <div class="option-card" onclick="window.open('#', '_blank')">
-                    <img src="img/opcion2.png" alt="Opción 2" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Nombre de Opción 2</h3>
-                        <span class="card-button">Acceder</span>
+                <p class="card-description">
+                    Recomienda talento y crece con nosotros. Tu red profesional es valiosa para Talma.
+                </p>
+                
+                <div class="qr-container">
+                    <div class="qr-placeholder">
+                        <!-- QR Code para Programa de Referidos -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u%26origin=QRCode" 
+                             alt="QR Referidos" 
+                             class="qr-image"
+                             id="qr-referidos">
+                    </div>
+                    <p class="qr-label">Escanea para ingresar referidos</p>
+                </div>
+                
+                <div class="card-actions">
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ingresar Referido
+                    </a>
+                    <button class="btn btn-secondary" onclick="shareContent('referidos')">
+                        <span class="btn-text">
+                            <i class="fas fa-share-alt"></i>
+                            Compartir Portal
+                        </span>
+                        <div class="spinner"></div>
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadQR('qr-referidos', 'QR_Referidos_Talma.png')">
+                        <i class="fas fa-download"></i>
+                        Descargar QR
+                    </button>
+                </div>
+            </article>
+
+            <!-- TARJETA 2: CONVOCATORIAS INTERNAS -->
+            <article class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-briefcase"></i>
+                        Convocatorias Internas
+                    </h2>
+                    <div class="info-icon">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="tooltip">
+                            Encuentra oportunidades de crecimiento dentro de Talma. Postula a posiciones que impulsen tu desarrollo profesional.
+                        </div>
                     </div>
                 </div>
                 
-                <div class="option-card" onclick="window.open('#', '_blank')">
-                    <img src="img/opcion3.png" alt="Opción 3" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Nombre de Opción 3</h3>
-                        <span class="card-button">Acceder</span>
+                <p class="card-description">
+                    Talento Talma: Tu crecimiento profesional. Explora las oportunidades disponibles.
+                </p>
+                
+                <div class="qr-container">
+                    <div class="qr-placeholder">
+                        <!-- QR Code para Convocatorias Internas -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UMlRYMDdUSU5JOUhKS0VBSkVEM1haV0hRRC4u%26origin=QRCode" 
+                             alt="QR Convocatorias" 
+                             class="qr-image"
+                             id="qr-convocatorias">
                     </div>
+                    <p class="qr-label">Escanea para ver convocatorias</p>
                 </div>
+                
+                <div class="card-actions">
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UMlRYMDdUSU5JOUhKS0VBSkVEM1haV0hRRC4u&origin=QRCode" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn btn-primary">
+                        <i class="fas fa-briefcase"></i>
+                        Ver Convocatorias
+                    </a>
+                    <button class="btn btn-secondary" onclick="shareContent('convocatorias')">
+                        <span class="btn-text">
+                            <i class="fas fa-share-alt"></i>
+                            Compartir Portal
+                        </span>
+                        <div class="spinner"></div>
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadQR('qr-convocatorias', 'QR_Convocatorias_Talma.png')">
+                        <i class="fas fa-download"></i>
+                        Descargar QR
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/cdn-cgi/l/email-protection#83f0ecf3ecf1f7e6adf7eac3f7e2efeee2ade0eceeadf3e6" class="footer-link">
+                <i class="fas fa-headset"></i>
+                Soporte TI
+            </a>
+            <a href="/cdn-cgi/l/email-protection#5c2e2e34341c283d30313d723f3331722c39" class="footer-link">
+                <i class="fas fa-question-circle"></i>
+                Ayuda RRHH
+            </a>
+        </div>
+    </footer>
+
+    <!-- PWA SNACKBAR - AÑADIR A INICIO -->
+    <div class="pwa-snackbar" id="pwa-snackbar">
+        <div class="pwa-snackbar-content">
+            <div class="pwa-snackbar-title">
+                <i class="fas fa-mobile-alt"></i>
+                Acceso Rápido
+            </div>
+            <div class="pwa-snackbar-text">
+                Añade este portal a tu pantalla de inicio
             </div>
         </div>
-        
-        <div class="footer">
-            <p>Uso exclusivo para colaboradores TALMA</p>
-        </div>
+        <button class="pwa-snackbar-close" onclick="closePWASnackbar()">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
-</body>
-</html>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        /* ========================================
+           CONFIGURACIÓN DE DATOS
+           ======================================== */
+        
+        // URLs y datos para compartir - MODIFICAR ESTOS VALORES
+        const shareData = {
+            referidos: {
+                title: 'Programa de Referidos - Talma',
+                text: 'Únete al programa de referidos de Talma. Recomienda talento y crece con nosotros.',
+                url: 'https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UQTdRUk5RWjREQzVYUFNZNk45QTVXUTlXMS4u&origin=QRCode',
+                qrImage: 'qr-referidos'
+            },
+            convocatorias: {
+                title: 'Convocatorias Internas - Talma',
+                text: 'Explora oportunidades de crecimiento profesional en Talma.',
+                url: 'https://forms.office.com/Pages/ResponsePage.aspx?id=cYe2XYR70kG88ZAGWKdWbBlSamTAhoBPvllsB2xtG59UMlRYMDdUSU5JOUhKS0VBSkVEM1haV0hRRC4u&origin=QRCode',
+                qrImage: 'qr-convocatorias'
+            }
+        };
+
+        /* ========================================
+           FUNCIÓN DE COMPARTIR (WEB SHARE API)
+           Comparte tanto el enlace como la imagen del QR
+           ======================================== */
+        async function shareContent(type) {
+            const data = shareData[type];
+            const button = event.target.closest('.btn-primary');
+            
+            // Mostrar loading
+            button.classList.add('loading');
+            
+            try {
+                // Verificar si el navegador soporta Web Share API
+                if (navigator.share) {
+                    // Obtener la imagen del QR como blob
+                    const qrElement = document.getElementById(data.qrImage);
+                    
+                    // Convertir imagen a blob para compartir
+                    const response = await fetch(qrElement.src);
+                    const blob = await response.blob();
+                    const file = new File([blob], `QR_${type}_Talma.png`, { type: 'image/png' });
+                    
+                    // Preparar datos para compartir
+                    const sharePayload = {
+                        title: data.title,
+                        text: data.text,
+                        url: data.url,
+                        files: [file]
+                    };
+                    
+                    // Verificar si se puede compartir archivos
+                    if (navigator.canShare && navigator.canShare(sharePayload)) {
+                        await navigator.share(sharePayload);
+                        showToast('¡Contenido compartido exitosamente!', 'success');
+                    } else {
+                        // Si no se pueden compartir archivos, compartir solo el texto y URL
+                        await navigator.share({
+                            title: data.title,
+                            text: data.text,
+                            url: data.url
+                        });
+                        showToast('¡Enlace compartido exitosamente!', 'success');
+                    }
+                } else {
+                    // Fallback: copiar al portapapeles
+                    await copyToClipboard(data.url);
+                    showToast('Enlace copiado al portapapeles', 'success');
+                }
+            } catch (error) {
+                // Si el usuario cancela o hay error
+                if (error.name !== 'AbortError') {
+                    console.error('Error al compartir:', error);
+                    showToast('No se pudo compartir el contenido', 'error');
+                }
+            } finally {
+                // Quitar loading
+                button.classList.remove('loading');
+            }
+        }
+
+        /* ========================================
+           FUNCIÓN DE DESCARGA DE QR
+           Descarga la imagen del QR directamente
+           ======================================== */
+        async function downloadQR(qrId, fileName) {
+            try {
+                const qrElement = document.getElementById(qrId);
+                
+                // Convertir imagen a blob
+                const response = await fetch(qrElement.src);
+                const blob = await response.blob();
+                
+                // Crear enlace temporal para descarga
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+                
+                showToast('¡QR descargado exitosamente!', 'success');
+            } catch (error) {
+                console.error('Error al descargar QR:', error);
+                showToast('No se pudo descargar el QR', 'error');
+            }
+        }
+
+        /* ========================================
+           FUNCIÓN AUXILIAR: COPIAR AL PORTAPAPELES
+           ======================================== */
+        async function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+            } else {
+                // Fallback para navegadores antiguos
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+        }
+
+        /* ========================================
+           SISTEMA DE NOTIFICACIONES TOAST
+           ======================================== */
+        function showToast(message, type = 'success') {
+            // Crear elemento toast
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' 
+                ? '<i class="fas fa-check-circle toast-icon"></i>'
+                : '<i class="fas fa-exclamation-circle toast-icon"></i>';
+            
+            toast.innerHTML = `
+                ${icon}
+                <span class="toast-message">${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Mostrar toast
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Ocultar y eliminar después de 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 400);
+            }, 3000);
+        }
+
+        /* ========================================
+           PWA SNACKBAR - AÑADIR A INICIO
+           ======================================== */
+        function showPWASnackbar() {
+            const snackbar = document.getElementById('pwa-snackbar');
+            const hasSeenBanner = localStorage.getItem('pwa-banner-seen');
+            
+            // Mostrar solo si no se ha visto antes
+            if (!hasSeenBanner) {
+                setTimeout(() => {
+                    snackbar.classList.add('show');
+                }, 3000); // Mostrar después de 3 segundos
+            }
+        }
+
+        function closePWASnackbar() {
+            const snackbar = document.getElementById('pwa-snackbar');
+            snackbar.classList.remove('show');
+            localStorage.setItem('pwa-banner-seen', 'true');
+        }
+
+        /* ========================================
+           INICIALIZACIÓN
+           ======================================== */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar PWA snackbar
+            showPWASnackbar();
+            
+            // Log para verificar que todo funciona
+            console.log('✅ Portal RRHH Talma cargado correctamente');
+            console.log('📱 Web Share API disponible:', !!navigator.share);
+        });
+
+        /* ========================================
+           SOPORTE PARA TOOLTIPS EN MÓVIL
+           ======================================== */
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.info-icon').forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tooltip = this.querySelector('.tooltip');
+                    tooltip.style.visibility = tooltip.style.visibility === 'visible' ? 'hidden' : 'visible';
+                    tooltip.style.opacity = tooltip.style.opacity === '1' ? '0' : '1';
+                    
+                    // Cerrar tooltip al tocar fuera
+                    setTimeout(() => {
+                        document.addEventListener('click', function closeTooltip(e) {
+                            if (!icon.contains(e.target)) {
+                                tooltip.style.visibility = 'hidden';
+                                tooltip.style.opacity = '0';
+                                document.removeEventL
